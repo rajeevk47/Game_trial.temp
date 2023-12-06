@@ -42,6 +42,7 @@ const keys ={
         pressed : false
     }
 
+    
 }
 function animate(){
     window.requestAnimationFrame(animate)
