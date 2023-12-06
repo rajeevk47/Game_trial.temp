@@ -21,7 +21,7 @@ class Sprite{
     }
 }
 
-const background = new Sprite({position: {
+const background = new Sprite({position: { 
     x:-590,
     y:-560
 },
