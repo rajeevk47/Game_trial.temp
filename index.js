@@ -42,7 +42,7 @@ const keys ={
         pressed : false
     }
 
-    
+
 }
 function animate(){
     window.requestAnimationFrame(animate)
@@ -98,5 +98,5 @@ window.addEventListener('keyup', (e) => {
 }
       
 )
-
+ 
 //----------//
