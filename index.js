@@ -95,6 +95,7 @@ window.addEventListener('keyup', (e) => {
     else if(e.key == 'd' || e.key == 'D'){
         keys.d.pressed =false
         }
+        //May use switch case
 }
       
 )
