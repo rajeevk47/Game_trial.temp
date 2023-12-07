@@ -36,8 +36,8 @@ class Boundary {
         this.height = 24
     }
     draw() {
-        // c.fillStyle = 'red'
-        // c.fillRect(this.position.x, this.position.y, this.width, this.height)
+        c.fillStyle = 'rgba(255,0,0,0.05)'
+        c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 }
 const offset = {
@@ -62,7 +62,7 @@ collisionsMap.forEach((row, i) => {
 const image = new Image()
 const playerImage = new Image()
 
-image.src = './img/tiledrpg.png'
+image.src = './img/ok.png'
 playerImage.src = './img/playerDown.png'
 
 class Sprite {
