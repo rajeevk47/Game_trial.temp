@@ -25,21 +25,7 @@ for (let i = 0; i < collisions.length; i += 160) {
     collisionsMap.push(collisions.slice(i, 160 + i)) 
 }
 
-  
 
-class Boundary {
-    static width = 24;
-    static height =24;
-    constructor({ position }) {
-        this.position = position
-        this.width = 24
-        this.height = 24
-    }
-    draw() {
-        c.fillStyle = 'rgba(255,0,0,0.05)'
-        c.fillRect(this.position.x, this.position.y, this.width, this.height)
-    }
-}
 const offset = {
     x: -810,
     y : -900
@@ -61,38 +47,11 @@ collisionsMap.forEach((row, i) => {
 
 const image = new Image()
 const playerImage = new Image()
+const Foreground = new Image()
 
 image.src = './img/ok.png'
 playerImage.src = './img/playerDown.png'
-
-class Sprite {
-    constructor({ position, velocity, image, frames = { max: 1} }) {
-        this.position = position
-        this.image = image
-        this.frames = frames
-        this.image.onload=()=>{
-           this.width = this.image.width / this.frames.max 
-           this.height = this.image.height
-        }
-        
-    }
-    draw() {
-        c.drawImage(
-            this.image,
-            0,
-            0,
-            this.image.width / this.frames.max,
-            this.image.height,
-            this.position.x,
-            this.position.y,
-            this.image.width / this.frames.max,
-            this.image.height
-            )
-
-    }
-}
-
-
+Foreground.src = './img/foreground.png'
 
 const player = new Sprite({
     position:{
@@ -114,6 +73,14 @@ const background = new Sprite({
     image: image
 })
 
+const foreground = new Sprite({
+    position: {
+        x: offset.x,
+        y: offset.y
+    },
+    image: Foreground
+})
+
 const keys = {
     w: {
         pressed: false
@@ -130,7 +97,7 @@ const keys = {
 
 }
 
-const movableitems = [background,...boundaries]
+const movableitems = [background,...boundaries , foreground]
 
 function rectangularcollision({rectangle1,rectangle2}){
     return(
@@ -148,6 +115,7 @@ function animate() {
         boundary.draw()})
 
     player.draw()
+    foreground.draw()
     let moving = true
     if (keys.w.pressed) {
         for(let i=0 ;i <boundaries.length;i++){
